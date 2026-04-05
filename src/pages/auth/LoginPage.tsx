@@ -144,13 +144,13 @@ export default function LoginPage() {
                 </p>
               </div>
 
-              {/* <div className="mt-4 pt-4 border-t border-slate-100">
-                <p className="text-xs text-slate-400 mb-2 font-medium uppercase tracking-wide">Dev quick-fill</p>
+              <div className="mt-4 pt-4 border-t border-slate-100">
+                <p className="text-xs text-slate-400 mb-2 font-medium uppercase tracking-wide">Dev quick-fill (For Demo Use)</p>
                 <div className="flex gap-2 flex-wrap">
                   {[
-                    { label: 'Admin', e: 'admin@stlukes.com', p: 'admin123', s: 'st-lukes' },
-                    { label: 'Doctor', e: 'doctor@stlukes.com', p: 'doctor123', s: 'st-lukes' },
-                    { label: 'Lab Tech', e: 'lab@stlukes.com', p: 'lab123', s: 'st-lukes' },
+                    { label: 'Admin', e: 'admin@clinic.com', p: 'password123', s: '' },
+                    { label: 'Doctor', e: 'doctor@clinic.com', p: 'password123', s: '' },
+                    { label: 'Lab Tech', e: 'lab@clinic.com', p: 'password123', s: '' },
                   ].map(({ label, e, p, s }) => (
                     <button key={label} type="button" onClick={() => fill(e, p, s)}
                       className="text-xs px-2.5 py-1 rounded-md bg-slate-100 text-slate-600 hover:bg-slate-200 transition-colors">
@@ -158,7 +158,7 @@ export default function LoginPage() {
                     </button>
                   ))}
                 </div>
-              </div> */}
+              </div>
             </>
           )}
         </div>
