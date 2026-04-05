@@ -21,6 +21,13 @@ export interface Organization {
   subscription?: Subscription;
   _count?: { users: number; patients: number };
 }
+export interface QRScanResult {
+  type: 'LAB_RESULT' | 'PRESCRIPTION' | 'RESULT'; // 🚩 Add 'LAB_RESULT' here
+  id: string;
+  token?: string;
+  status?: string;
+  data?: any; // 🚩 Add this to fix the second error
+}
 
 export interface Subscription {
   id: string;
