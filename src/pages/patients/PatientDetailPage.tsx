@@ -4,17 +4,24 @@ import { ArrowLeft, FlaskConical, FileText, Phone, MapPin, Loader2 } from 'lucid
 import { patientService } from '../../services';
 import type { Patient } from '../../types';
 import toast from 'react-hot-toast';
+import { useAuth } from '../../context/AuthContext';
+
 
 const STATUS_COLORS: Record<string, string> = {
-  PENDING:    'badge bg-yellow-100 text-yellow-700',
-  SENT_TO_LAB:'badge bg-blue-100 text-blue-700',
-  COMPLETED:  'badge bg-green-100 text-green-700',
+  PENDING: 'badge bg-yellow-100 text-yellow-700',
+  SENT_TO_LAB: 'badge bg-blue-100 text-blue-700',
+  COMPLETED: 'badge bg-green-100 text-green-700',
 };
 
+const ROLE_LABELS: Record<string, string> = {
+  ORG_ADMIN: 'Admin', DOCTOR: 'Doctor', LAB_TECH: 'Lab Tech',
+  PATIENT: 'Patient', SUPER_ADMIN: 'Super Admin',
+};
 export default function PatientDetailPage() {
   const { id } = useParams<{ id: string }>();
   const [patient, setPatient] = useState<Patient | null>(null);
   const [loading, setLoading] = useState(true);
+  const { user } = useAuth();
 
   useEffect(() => {
     if (!id) return;
@@ -69,12 +76,15 @@ export default function PatientDetailPage() {
             )}
           </div>
           <div className="pt-3 border-t border-slate-100 flex gap-2">
-            <Link to={`/prescriptions/new?patientId=${patient.id}`} className="btn-primary flex-1 justify-center text-xs py-2">
-              <FileText size={13} /> New Rx
-            </Link>
-            <Link to={`/results/new?patientId=${patient.id}`} className="btn-secondary flex-1 justify-center text-xs py-2">
-              <FlaskConical size={13} /> Add Result
-            </Link>
+
+            {['DOCTOR'].includes(user?.role || '') && (
+              <Link to={`/prescriptions/new?patientId=${patient.id}`} className="btn-primary flex-1 justify-center text-xs py-2">
+                <FileText size={13} /> New Rx
+              </Link>)}
+            {['LAB_TECH'].includes(user?.role || '') && (
+              <Link to={`/results/new?patientId=${patient.id}`} className="btn-secondary flex-1 justify-center text-xs py-2">
+                <FlaskConical size={13} /> Add Result
+              </Link>)}
           </div>
         </div>
 

@@ -21,6 +21,10 @@ const NEXT_LABEL: Record<string, string> = {
   PENDING: 'Mark as Sent to Lab',
   SENT_TO_LAB: 'Mark as Completed',
 };
+const ROLE_LABELS: Record<string, string> = {
+  ORG_ADMIN: 'Admin', DOCTOR: 'Doctor', LAB_TECH: 'Lab Tech',
+  PATIENT: 'Patient', SUPER_ADMIN: 'Super Admin',
+};
 
 export default function PrescriptionDetailPage() {
   const { id } = useParams<{ id: string }>();
@@ -99,13 +103,15 @@ export default function PrescriptionDetailPage() {
               {NEXT_LABEL[prescription.status]}
             </button>
           )}
-
-          <Link
-            to={`/results/new?patientId=${prescription.patientId}&prescriptionId=${prescription.id}`}
-            className="btn-secondary w-full justify-center text-sm"
-          >
-            <FlaskConical size={14} /> Add Lab Result
-          </Link>
+          {['LAB_TECH'].includes(user?.role || '') && (
+            <Link
+              to={`/results/new?patientId=${prescription.patientId}&prescriptionId=${prescription.id}`}
+              className="btn-secondary w-full justify-center text-sm flex items-center gap-2"
+            >
+              <FlaskConical size={14} />
+              <span>Add Lab Result</span>
+            </Link>
+          )}
         </div>
 
         {/* Right: Details */}
