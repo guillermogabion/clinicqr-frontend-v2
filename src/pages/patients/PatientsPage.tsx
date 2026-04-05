@@ -12,7 +12,7 @@ export default function PatientsPage() {
   const [search, setSearch] = useState('');
   const [loading, setLoading] = useState(true);
 
-  const canCreate = ['ADMIN', 'DOCTOR', 'LAB_TECH'].includes(user?.role || '');
+  const canCreate = ['ORG_ADMIN', 'DOCTOR', 'LAB_TECH'].includes(user?.role || '');
 
   const load = (s = '') => {
     setLoading(true);

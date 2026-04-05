@@ -7,9 +7,9 @@ import { useAuth } from '../../context/AuthContext';
 import toast from 'react-hot-toast';
 
 const STATUS_COLORS: Record<string, string> = {
-  PENDING:    'badge bg-yellow-100 text-yellow-700',
-  SENT_TO_LAB:'badge bg-blue-100 text-blue-700',
-  COMPLETED:  'badge bg-green-100 text-green-700',
+  PENDING: 'badge bg-yellow-100 text-yellow-700',
+  SENT_TO_LAB: 'badge bg-blue-100 text-blue-700',
+  COMPLETED: 'badge bg-green-100 text-green-700',
 };
 
 const NEXT_STATUS: Record<string, string> = {
@@ -29,7 +29,7 @@ export default function PrescriptionDetailPage() {
   const [loading, setLoading] = useState(true);
   const [updating, setUpdating] = useState(false);
 
-  const canUpdateStatus = ['ADMIN', 'DOCTOR', 'LAB_TECH'].includes(user?.role || '');
+  const canUpdateStatus = ['ORG_ADMIN', 'DOCTOR', 'LAB_TECH'].includes(user?.role || '');
 
   useEffect(() => {
     if (!id) return;

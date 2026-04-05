@@ -13,7 +13,7 @@ export default function ResultDetailPage() {
   const [loading, setLoading] = useState(true);
   const [printing, setPrinting] = useState(false);
 
-  const canPrint = ['ADMIN', 'LAB_TECH'].includes(user?.role || '');
+  const canPrint = ['ORG_ADMIN', 'LAB_TECH'].includes(user?.role || '');
 
   useEffect(() => {
     if (!id) return;

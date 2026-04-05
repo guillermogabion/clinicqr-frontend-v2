@@ -7,9 +7,9 @@ import { useAuth } from '../../context/AuthContext';
 import toast from 'react-hot-toast';
 
 const STATUS_COLORS: Record<string, string> = {
-  PENDING:    'badge bg-yellow-100 text-yellow-700',
-  SENT_TO_LAB:'badge bg-blue-100 text-blue-700',
-  COMPLETED:  'badge bg-green-100 text-green-700',
+  PENDING: 'badge bg-yellow-100 text-yellow-700',
+  SENT_TO_LAB: 'badge bg-blue-100 text-blue-700',
+  COMPLETED: 'badge bg-green-100 text-green-700',
 };
 
 export default function PrescriptionsPage() {
@@ -19,7 +19,7 @@ export default function PrescriptionsPage() {
   const [statusFilter, setStatusFilter] = useState('');
   const [loading, setLoading] = useState(true);
 
-  const canCreate = ['ADMIN', 'DOCTOR'].includes(user?.role || '');
+  const canCreate = ['ORG_ADMIN', 'DOCTOR'].includes(user?.role || '');
   const patientId = params.get('patientId') || undefined;
 
   const load = (status = '') => {
@@ -54,11 +54,10 @@ export default function PrescriptionsPage() {
           <button
             key={s}
             onClick={() => handleFilter(s)}
-            className={`px-3 py-1.5 text-sm rounded-lg font-medium transition-colors ${
-              statusFilter === s
-                ? 'bg-brand-600 text-white'
-                : 'bg-white border border-slate-200 text-slate-600 hover:bg-slate-50'
-            }`}
+            className={`px-3 py-1.5 text-sm rounded-lg font-medium transition-colors ${statusFilter === s
+              ? 'bg-brand-600 text-white'
+              : 'bg-white border border-slate-200 text-slate-600 hover:bg-slate-50'
+              }`}
           >
             {s || 'All'}
           </button>

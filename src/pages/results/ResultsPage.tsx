@@ -18,7 +18,7 @@ export default function ResultsPage() {
   const [search, setSearch] = useState('');
   const [loading, setLoading] = useState(true);
 
-  const canCreate = ['ADMIN', 'LAB_TECH'].includes(user?.role || '');
+  const canCreate = ['ORG_ADMIN', 'LAB_TECH'].includes(user?.role || '');
   const patientId = params.get('patientId') || undefined;
 
   const load = (s = '') => {
