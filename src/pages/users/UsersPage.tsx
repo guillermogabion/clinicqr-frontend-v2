@@ -9,10 +9,10 @@ const ROLE_LABELS: Record<string, string> = {
   ADMIN: 'Admin', DOCTOR: 'Doctor', LAB_TECH: 'Lab Tech', PATIENT: 'Patient',
 };
 const ROLE_COLORS: Record<string, string> = {
-  ADMIN:    'badge bg-purple-100 text-purple-700',
-  DOCTOR:   'badge bg-blue-100 text-blue-700',
+  ORG_ADMIN: 'badge bg-purple-100 text-purple-700',
+  DOCTOR: 'badge bg-blue-100 text-blue-700',
   LAB_TECH: 'badge bg-green-100 text-green-700',
-  PATIENT:  'badge bg-orange-100 text-orange-700',
+  PATIENT: 'badge bg-orange-100 text-orange-700',
 };
 const ROLE_ICONS: Record<string, any> = {
   ADMIN: ShieldCheck, DOCTOR: Stethoscope, LAB_TECH: FlaskConical,
@@ -99,7 +99,7 @@ export default function UsersPage() {
                 <select className="input" value={form.role} onChange={e => set('role', e.target.value)}>
                   <option value="DOCTOR">Doctor</option>
                   <option value="LAB_TECH">Lab Tech</option>
-                  <option value="ADMIN">Admin</option>
+                  <option value="ORG_ADMIN">Admin</option>
                 </select>
               </div>
               <div>
@@ -142,11 +142,10 @@ export default function UsersPage() {
         {['', 'ADMIN', 'DOCTOR', 'LAB_TECH'].map(r => (
           <button key={r}
             onClick={() => setFilterRole(r)}
-            className={`px-3 py-1.5 text-sm rounded-lg font-medium transition-colors ${
-              filterRole === r
-                ? 'bg-brand-600 text-white'
-                : 'bg-white border border-slate-200 text-slate-600 hover:bg-slate-50'
-            }`}>
+            className={`px-3 py-1.5 text-sm rounded-lg font-medium transition-colors ${filterRole === r
+              ? 'bg-brand-600 text-white'
+              : 'bg-white border border-slate-200 text-slate-600 hover:bg-slate-50'
+              }`}>
             {r ? ROLE_LABELS[r] : 'All'}
           </button>
         ))}
