@@ -30,9 +30,9 @@ export default function MainLayout() {
 
   const navItems = [
     { to: '/', label: 'Dashboard', icon: LayoutDashboard, exact: true, roles: ['ORG_ADMIN', 'DOCTOR', 'LAB_TECH'] },
-    { to: '/patients', label: 'Patients', icon: Users, exact: false, roles: ['ORG_ADMIN', 'DOCTOR', 'LAB_TECH'] },
-    { to: '/prescriptions', label: 'Prescriptions', icon: FileText, exact: false, roles: ['ORG_ADMIN', 'DOCTOR', 'LAB_TECH'] },
-    { to: '/results', label: 'Lab Results', icon: FlaskConical, exact: false, roles: ['ORG_ADMIN', 'DOCTOR', 'LAB_TECH'] },
+    { to: '/patients', label: 'Patients', icon: Users, exact: false, roles: ['DOCTOR', 'LAB_TECH'] },
+    { to: '/prescriptions', label: 'Prescriptions', icon: FileText, exact: false, roles: ['DOCTOR', 'LAB_TECH'] },
+    { to: '/results', label: 'Lab Results', icon: FlaskConical, exact: false, roles: ['DOCTOR', 'LAB_TECH'] },
     { to: '/users', label: 'User Accounts', icon: UserCog, exact: false, roles: ['ORG_ADMIN'] },
     { to: '/settings', label: 'Settings', icon: Settings, exact: false, roles: ['ORG_ADMIN'] },
     ...(isSuperAdmin ? [{ to: '/superadmin', label: 'Super Admin', icon: Crown, exact: false, roles: ['SUPER_ADMIN'] }] : []),
